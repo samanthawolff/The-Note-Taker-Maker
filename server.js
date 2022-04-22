@@ -1,5 +1,4 @@
 const express = require('express');
-const mySQL = require('mysql');
 const fs = require('fs');
 const path = require('path');
 
@@ -11,6 +10,17 @@ const PORT = process.env.PORT || 3001;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
+
+fs.readFile('db/db.json', 'utf8', (err, data) => {
+    if (err) throw err;
+
+    var notes = JSON.parse(data);
+
+    app.get('/api/notes', function (req, res) {
+        res.json(notes);
+    });
+})
+
 
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, './public/index.html'));
