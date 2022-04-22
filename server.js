@@ -19,6 +19,13 @@ fs.readFile('db/db.json', 'utf8', (err, data) => {
     app.get('/api/notes', function (req, res) {
         res.json(notes);
     });
+
+    app.post('/api/notes', function (req, res) {
+        let newNote = req.body;
+        notes.push(newNote);
+        updateDatabase();
+        return console.log('New Note Added!');
+    });
 })
 
 
