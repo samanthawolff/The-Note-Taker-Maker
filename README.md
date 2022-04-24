@@ -1,4 +1,4 @@
-# The-Note-Taker-Maker
+# The Note Taker Maker
 
   ![License: ISC](https://img.shields.io/badge/License-ISC-yellow.svg)
 
